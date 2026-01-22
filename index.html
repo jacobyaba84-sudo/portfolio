@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - Jacob</title>
+  <!-- Chargement de Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+  <style>
+    /* Configuration de la police Inter et défilement fluide */
+    body {
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+      background-color: #fcfcfc; /* Blanc très léger */
+      color: #333; /* Gris foncé pour le texte */
+    }
+    /* Styles pour la barre de navigation (transparence) */
+    .navbar {
+      transition: background-color 0.3s ease;
+      backdrop-filter: blur(8px);
+    }
+
+    /* --- EFFET MACHINE À ÉCRIRE (TYPING) --- */
+    /* Masque initialement le texte et définit l'animation du curseur */
+    .typing-text {
+      display: inline-block;
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 0.15em solid black; /* Curseur clignotant */
+      width: 0; /* Commence avec une largeur nulle */
+    }
+    
+    /* Animation pour le titre H1 */
+    @keyframes typing-h1 {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    /* Animation pour le sous-titre H2 (démarre plus tard) */
+    @keyframes typing-h2 {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    /* Animation de clignotement du curseur */
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: black }
+    }
+    
+    /* Classes pour les éléments en attente d'animation au scroll */
+    .animate-hidden {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+    .animate-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="text-gray-800">
+
+  <!-- BARRE DE NAVIGATION (Noir/Gris) -->
+  <header class="navbar fixed top-0 left-0 right-0 z-50 bg-white/90 shadow-lg border-b border-gray-100">
+    <div class="max-w-6xl mx-auto flex justify-between items-center p-4">
+      <div class="logo text-2xl font-extrabold text-neutral-900 tracking-wider">JACOB</div>
+      <nav>
+        <ul class="flex space-x-6">
+          <li><a href="#accueil" class="text-gray-600 hover:text-black transition duration-300">Accueil</a></li>
+          <li><a href="#apropos" class="text-gray-600 hover:text-black transition duration-300">À propos</a></li>
+          <li><a href="#cv" class="text-gray-600 hover:text-black transition duration-300">Mon CV</a></li>
+          <li><a href="#contact" class="text-gray-800 font-semibold hover:text-black transition duration-300">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- SECTION ACCUEIL (avec effet Machine à Écrire) -->
+  <section id="accueil" class="section accueil min-h-screen flex items-center justify-center bg-gray-50 pt-16">
+    <div class="content p-8 text-center max-w-3xl">
+      <h1 class="text-6xl md:text-8xl font-black mb-4 leading-tight text-neutral-900">
+        <!-- Conteneur pour l'effet machine à écrire -->
+        <span id="title-typing" class="typing-text">Hi i'am Jacob</span>
+      </h1>
+      <h2 class="text-2xl md:text-3xl font-light text-gray-600 mb-10">
+        <!-- Conteneur pour l'effet machine à écrire du sous-titre -->
+        <span id="subtitle-typing" class="typing-text">Débutant et Passionné de Dev Web</span>
+      </h2>
+      <a href="#apropos" class="btn inline-block bg-neutral-800 text-white px-10 py-3 rounded-full font-medium shadow-xl hover:bg-black transition duration-300 transform hover:scale-[1.05]">Découvrir</a>
+    </div>
+  </section>
+
+  <!-- SECTION À PROPOS (Animation au scroll) -->
+  <section id="apropos" class="section apropos py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="section-title text-4xl font-bold text-center mb-16 text-neutral-800">À propos</h2>
+      <div class="apropos-content flex flex-col lg:flex-row items-center gap-12 animate-hidden" data-animation-delay="0.1">
+        <!-- Placeholder pour l'image -->
+        <div class="w-full lg:w-1/3 flex justify-center">
+          <img src="image.jpeg" onerror="this.src='https://placehold.co/300x300/e5e5e5/333333?text=Photo+Jacob'" alt="Photo Jacob" class="rounded-full w-64 h-64 object-cover shadow-2xl border-4 border-white transform transition duration-500 hover:scale-[1.02]">
+        </div>
+        <div class="text w-full lg:w-2/3">
+          <p class="text-lg leading-relaxed text-gray-700">
+            Moi c'est **Jacob Yaba**, j'ai 17 ans et je suis Étudiant en Licence 1 Développement Web à 
+            <a href="https://institutdigital.com" target="_blank" class="text-neutral-700 hover:text-black font-medium transition duration-300 border-b border-gray-400 hover:border-black">l'institut supérieur du digital</a>, 
+            un passionné de création, de structure et de précision. J'aime apprendre, comprendre et bâtir pas à pas.
+          </p>
+          <p class="text-lg leading-relaxed text-gray-700 mt-4">
+            Que ce soit dans le code, le design ou même dans mes projets perso, j'avance toujours avec la même idée : 
+            faire les choses proprement, avec du style et du sens. Ce site, c'est une vitrine de ma façon de travailler — simple, minimaliste, mais toujours réfléchie.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION CV (Animation au scroll) -->
+  <section id="cv" class="section cv py-24 bg-gray-100">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="section-title text-4xl font-bold text-center mb-16 text-neutral-800">Mon CV</h2>
+      <div class="cv-grid grid md:grid-cols-3 gap-10 animate-hidden" data-animation-delay="0.2">
+        
+        <!-- CV Item 1: Formation -->
+        <div class="cv-item bg-white p-6 rounded-2xl shadow-xl border-t-4 border-neutral-800 hover:shadow-2xl transition duration-300">
+          <h3 class="text-2xl font-semibold text-neutral-800 mb-4 border-b pb-2">Formation</h3>
+          <ul class="space-y-3 list-none p-0">
+            <li class="relative pl-6 before:content-['•'] before:absolute before:left-0 before:text-neutral-600">
+              <strong class="font-medium">Baccalauréat</strong> — 2025 : (LGB) lycée de garçon de Bingerville
+            </li>
+            <li class="relative pl-6 before:content-['•'] before:absolute before:left-0 before:text-neutral-600">
+              <strong class="font-medium">Licence Dev Web</strong> — En cours : (ISD) institut supérieur du digital
+            </li>
+          </ul>
+        </div>
+
+        <!-- CV Item 2: Expériences -->
+        <div class="cv-item bg-white p-6 rounded-2xl shadow-xl border-t-4 border-neutral-800 hover:shadow-2xl transition duration-300">
+          <h3 class="text-2xl font-semibold text-neutral-800 mb-4 border-b pb-2">Expériences / Compétences</h3>
+          <ul class="space-y-3 list-none p-0">
+            <li class="relative pl-6 before:content-['•'] before:absolute before:left-0 before:text-neutral-600">
+              <strong class="font-medium">HTML et CSS</strong> — Maîtrise et compréhension des notions de base
+            </li>
+            <li class="relative pl-6 before:content-['•'] before:absolute before:left-0 before:text-neutral-600">
+              <strong class="font-medium">Algorithmique</strong> — Connaissance des notions de base du codage
+            </li>
+            <li class="relative pl-6 before:content-['•'] before:absolute before:left-0 before:text-neutral-600">
+              <strong class="font-medium">Éditeur & Navigateur</strong> — Maîtrise de VSCode pour la rédaction et des outils navigateurs pour l'optimisation
+            </li>
+          </ul>
+        </div>
+        
+        <!-- CV Item 3: Qualités -->
+        <div class="cv-item bg-white p-6 rounded-2xl shadow-xl border-t-4 border-neutral-800 hover:shadow-2xl transition duration-300">
+          <h3 class="text-2xl font-semibold text-neutral-800 mb-4 border-b pb-2">Qualités</h3>
+          <ul class="space-y-3 list-none p-0">
+            <li class="relative pl-6 before:content-['•'] before:absolute before:left-0 before:text-neutral-600">
+              <strong class="font-medium">Discipline</strong> — Travail régulier et constant
+            </li>
+            <li class="relative pl-6 before:content-['•'] before:absolute before:left-0 before:text-neutral-600">
+              <strong class="font-medium">Organisation</strong> — Méthode claire et logique
+            </li>
+            <li class="relative pl-6 before:content-['•'] before:absolute before:left-0 before:text-neutral-600">
+              <strong class="font-medium">Créatif</strong> — Innovant, Imaginatif, et original
+            </li>
+            <li class="relative pl-6 before:content-['•'] before:absolute before:left-0 before:text-neutral-600">
+              <strong class="font-medium">Esprit d'Équipe</strong> — Collaboratif et respectueux
+            </li>
+            <li class="relative pl-6 before:content-['•'] before:absolute before:left-0 before:text-neutral-600">
+              <strong class="font-medium">Curiosité</strong> — Envie d'apprendre et de découvrir
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION CONTACT (Animation au scroll) -->
+  <section id="contact" class="section contact py-24 bg-white">
+    <div class="max-w-xl mx-auto px-6">
+      <h2 class="section-title text-4xl font-bold text-center mb-16 text-neutral-800">Contact</h2>
+      <div class="contact-content bg-gray-50 p-8 rounded-2xl shadow-2xl border border-gray-200 animate-hidden" data-animation-delay="0.3">
+        <p class="text-center text-lg mb-8 text-gray-700">Envie de collaborer ou d’échanger ? Envoyez-moi un message directement.</p>
+        
+        <!-- Le formulaire utilise l'événement onsubmit pour appeler la fonction JS -->
+        <form onsubmit="return handleContactForm(event)" class="space-y-4">
+          <input type="text" id="name" name="name" placeholder="Votre nom" required 
+                 class="w-full p-3 border border-gray-300 rounded-lg focus:ring-neutral-500 focus:border-neutral-500 transition duration-150 shadow-inner">
+                 
+          <input type="email" id="email" name="email" placeholder="Votre email" required 
+                 class="w-full p-3 border border-gray-300 rounded-lg focus:ring-neutral-500 focus:border-neutral-500 transition duration-150 shadow-inner">
+                 
+          <textarea id="message" name="message" placeholder="Votre message" rows="6" required 
+                    class="w-full p-3 border border-gray-300 rounded-lg focus:ring-neutral-500 focus:border-neutral-500 transition duration-150 shadow-inner"></textarea>
+                    
+          <button type="submit" id="contact-button"
+                  class="w-full bg-neutral-800 text-white p-3 rounded-lg font-semibold text-lg shadow-xl hover:bg-black transition duration-300 transform hover:scale-[1.01]">
+            Envoyer
+          </button>
+          
+          <p id="feedback-message" class="text-center text-sm text-gray-500 mt-4 hidden">
+              Le bouton d'envoi ouvrira votre client de messagerie par défaut.
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- PIED DE PAGE -->
+  <footer class="bg-neutral-900 text-white p-6 text-center shadow-inner">
+    <p class="text-sm opacity-80">© 2025  | Réalisé par Jacob Yaba </p>
+  </footer>
+
+  <script>
+    // ************************************************************
+    // !!! IMPORTANT : REMPLACEZ CETTE VALEUR PAR VOTRE EMAIL !!!
+    // ************************************************************
+    const RECIPIENT_EMAIL = 'votre.email@example.com'; 
+
+    /**
+     * Gère l'envoi du formulaire en construisant un lien mailto.
+     */
+    function handleContactForm(event) {
+        event.preventDefault(); 
+        
+        const form = event.target;
+        const name = form.elements.name.value;
+        const email = form.elements.email.value;
+        const message = form.elements.message.value;
+        const submitButton = document.getElementById('contact-button');
+        
+        // Construction du sujet et du corps du message
+        const subject = encodeURIComponent(`Nouveau message de ${name} via le Portfolio`);
+        const body = encodeURIComponent(`
+Nom: ${name}
+Email: ${email}
+
+Message:
+${message}
+        `.trim()); 
+
+        const mailtoLink = `mailto:${RECIPIENT_EMAIL}?subject=${subject}&body=${body}`;
+
+        // Feedback visuel
+        const originalText = submitButton.textContent;
+        submitButton.textContent = 'Ouverture de votre messagerie...';
+        
+        window.location.href = mailtoLink;
+        
+        setTimeout(() => {
+            submitButton.textContent = originalText;
+        }, 3000);
+
+        return false; 
+    }
+
+    
+    /**
+     * Déclenche l'animation de machine à écrire sur la page d'accueil.
+     */
+    function startTypingAnimation() {
+      const title = document.getElementById('title-typing');
+      const subtitle = document.getElementById('subtitle-typing');
+
+      // Détermine la durée basée sur le nombre de caractères pour le titre
+      const titleLength = title.textContent.length;
+      const titleDuration = titleLength * 0.1; // 100ms par caractère
+      
+      // Applique l'animation au titre (machine à écrire + clignotement)
+      title.style.animation = `typing-h1 ${titleDuration}s steps(${titleLength}, end) forwards, blink-caret 0.75s step-end infinite`;
+      
+      // Détermine la durée et le délai pour le sous-titre (démarre après le titre)
+      const subtitleLength = subtitle.textContent.length;
+      const subtitleDuration = subtitleLength * 0.05; // 50ms par caractère
+      const subtitleDelay = titleDuration + 0.5; // Démarre 0.5s après la fin du titre
+
+      // Applique l'animation au sous-titre
+      setTimeout(() => {
+          subtitle.style.animation = `typing-h2 ${subtitleDuration}s steps(${subtitleLength}, end) forwards, blink-caret 0.75s step-end infinite`;
+      }, subtitleDelay * 1000); // Conversion en millisecondes
+    }
+
+    /**
+     * Met en place l'Intersection Observer pour les animations au défilement.
+     */
+    function setupScrollAnimations() {
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // L'élément est visible, ajouter la classe d'animation
+            entry.target.classList.add('animate-visible');
+            // Arrêter d'observer cet élément
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        rootMargin: '0px',
+        threshold: 0.1 // Déclenchement quand 10% de l'élément est visible
+      });
+
+      // Sélectionne tous les éléments avec la classe 'animate-hidden'
+      document.querySelectorAll('.animate-hidden').forEach(element => {
+        observer.observe(element);
+      });
+    }
+
+    // Démarre toutes les fonctionnalités après le chargement de la page
+    window.onload = function () {
+      startTypingAnimation();
+      setupScrollAnimations();
+    };
+  </script>
+</body>
+</html>
